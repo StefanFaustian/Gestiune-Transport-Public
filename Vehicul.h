@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 
 #include <string>
 #include <iostream>
@@ -11,28 +11,25 @@ protected:
     int capacitateMax;
     const int id;
 
+
 public:
     // Constructor
     Vehicul(const std::string& numar, int cap);
 
-    // Copy Constructor
+    // Constructor de copiere
     Vehicul(const Vehicul& other);
 
-    // Operator de atribuire (folosind copy-and-swap)
+    // Operator de atribuire
     Vehicul& operator=(const Vehicul& other);
 
     // Destructor
     virtual ~Vehicul();
 
-    // "Constructor virtual" - pattern-ul CLONE
-    //virtual Vehicul* clone() const = 0;
+    // Funcție statica
+    // static int getTotalVehicule();
 
-    // Funcție statică
-    //static int getTotalVehicule();
-
-    // Prieten pentru a implementa copy-and-swap
-    //friend void swap(Vehicul& first, Vehicul& second);
-
-    //
+    // Afisare
     friend std::ostream& operator<<(std::ostream& out, const Vehicul& v);
+
+    friend void swap(Vehicul& a, Vehicul& b);
 };

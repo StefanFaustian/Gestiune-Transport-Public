@@ -8,5 +8,14 @@ class Tramvai : public Vehicul {
 public:
     Tramvai(std::string numar, int cap, int vagoane);
 
+    // Constructor de copiere
+    Tramvai(const Tramvai& other);
+
+    // Operatorul =
+    Tramvai& operator=(Tramvai other);
+
+    // Functie prieten swap
+    friend void swap(Tramvai& a, Tramvai& b);
+
     ~Tramvai();
 };

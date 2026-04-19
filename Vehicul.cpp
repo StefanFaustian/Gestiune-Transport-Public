@@ -15,11 +15,11 @@ Vehicul::~Vehicul() {
 Vehicul::Vehicul(const Vehicul& other) : nrInmatriculare(other.nrInmatriculare), capacitateMax(other.capacitateMax), id(++contorId) {}
 
 // Implementare functie swap
-// void swap(Vehicul& crt, Vehicul& other) {
-//     using std::swap;
-//     swap(crt.nrInmatriculare, other.nrInmatriculare);
-//     swap(crt.capacitateMax, other.capacitateMax);
-// }
+void swap(Vehicul& a, Vehicul& b) {
+    using std::swap;
+    swap(a.nrInmatriculare, b.nrInmatriculare);
+    swap(a.capacitateMax, b.capacitateMax);
+}
 
 // Implementare operator de atribuire
 Vehicul& Vehicul::operator=(const Vehicul& other) {
@@ -40,4 +40,6 @@ std::ostream& operator<<(std::ostream& out, const Vehicul& v) {
 
 int Vehicul::contorId = 0;
 
-//void Vehicul::afisare(std::ostream& out) const {}
+// int Vehicul::getTotalVehicule() {
+//     return contorId;
+// }
