@@ -7,7 +7,7 @@ class Troleibuz : public Vehicul {
     bool baterieAuxiliara;
 public:
     // Constructor
-    Troleibuz(std::string numar, int cap, bool baterie);
+    Troleibuz(const std::string& numar, const int cap, const bool baterie);
 
     // Constructor de copiere
     Troleibuz(Troleibuz& other);

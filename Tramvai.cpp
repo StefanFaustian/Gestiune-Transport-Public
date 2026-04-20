@@ -3,10 +3,10 @@
 #include "Autobuz.h"
 
 void Tramvai::afisare(std::ostream& out) const {
-    out << "Nr. vagoane: " << nrVagoane << '\n';
+    out << "Nr. vagoane: " << nrVagoane << "\n~~~~~~~~~~~TRAMVAI~~~~~~~~~~~\n";
 }
 
-Tramvai::Tramvai(std::string numar, int cap, int vagoane) : Vehicul(numar,cap), nrVagoane(vagoane) {}
+Tramvai::Tramvai(const std::string numar, const int cap, const int vagoane) : Vehicul(numar,cap), nrVagoane(vagoane) {}
 
 Tramvai::Tramvai(const Tramvai& other) : Vehicul(other), nrVagoane(other.nrVagoane) {}
 

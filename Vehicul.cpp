@@ -2,7 +2,7 @@
 #include <iomanip>
 
 // Implementare constructor
-Vehicul::Vehicul(const std::string& numar, int cap) : nrInmatriculare(numar), capacitateMax(cap), id(++contorId) {
+Vehicul::Vehicul(const std::string& numar, const int cap) : nrInmatriculare(numar), capacitateMax(cap), id(++contorId) {
     std::cout << "Vehicul " << nrInmatriculare << " construit.\n";
 }
 
@@ -30,13 +30,20 @@ Vehicul& Vehicul::operator=(const Vehicul& other) {
     return *this;
 }
 
+const std::string Vehicul::getNrInmatriculare() const {
+    return nrInmatriculare;
+}
+
 std::ostream& operator<<(std::ostream& out, const Vehicul& v) {
+    out<<"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     out<<"(ID " << std::setw(3) << std::setfill('0') << v.id <<") Vehicul inmatriculat: " << v.nrInmatriculare<< '\n';
     out<<"Are capacitate de " << v.capacitateMax << '\n';
     v.afisare(out);
     out<<'\n';
     return out;
 }
+
+
 
 int Vehicul::contorId = 0;
 

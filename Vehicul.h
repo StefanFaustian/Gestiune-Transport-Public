@@ -7,14 +7,16 @@ class Vehicul {
     static int contorId;
     virtual void afisare(std::ostream&) const = 0;
 protected:
-    std::string nrInmatriculare;
     int capacitateMax;
+    // int nrKM;
     const int id;
+    std::string nrInmatriculare;
+
 
 
 public:
     // Constructor
-    Vehicul(const std::string& numar, int cap);
+    Vehicul(const std::string& numar, const int cap);
 
     // Constructor de copiere
     Vehicul(const Vehicul& other);
@@ -32,4 +34,8 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Vehicul& v);
 
     friend void swap(Vehicul& a, Vehicul& b);
+
+    // Getters
+    const std::string getNrInmatriculare() const;
+
 };

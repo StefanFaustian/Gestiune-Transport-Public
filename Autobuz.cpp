@@ -1,10 +1,10 @@
 #include "Autobuz.h"
 
 void Autobuz::afisare(std::ostream& out) const {
-    out<<"Tipul motorului: " << tipMotor << '\n';
+    out<<"Tipul motorului: " << tipMotor << "\n~~~~~~~~~~~AUTOBUZ~~~~~~~~~~~\n";
 }
 
-Autobuz::Autobuz(std::string numar, int cap, std::string motor) : Vehicul(numar,cap), tipMotor(motor) {}
+Autobuz::Autobuz(const std::string& numar, const int cap, const std::string& motor) : Vehicul(numar,cap), tipMotor(motor) {}
 
 Autobuz::Autobuz(const Autobuz& other) : Vehicul(other), tipMotor(other.tipMotor) {}
 

@@ -6,7 +6,7 @@ class Tramvai : public Vehicul {
     void afisare(std::ostream& out) const override;
     int nrVagoane;
 public:
-    Tramvai(std::string numar, int cap, int vagoane);
+    Tramvai(const std::string numar, const int cap, const int vagoane);
 
     // Constructor de copiere
     Tramvai(const Tramvai& other);

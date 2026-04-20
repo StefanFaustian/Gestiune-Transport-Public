@@ -12,4 +12,6 @@ add_executable(Tema2
         Autobuz.cpp
         Tramvai.cpp
         Troleibuz.h
-        Troleibuz.cpp)
+        Troleibuz.cpp
+        Depou.cpp
+        Depou.h)

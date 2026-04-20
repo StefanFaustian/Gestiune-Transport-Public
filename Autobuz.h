@@ -8,7 +8,7 @@ class Autobuz : public Vehicul {
     std::string tipMotor;
 public:
     // Constructor
-    Autobuz(std::string numar, int cap, std::string motor);
+    Autobuz(const std::string& numar, const int cap, const std::string& motor);
 
     // Constructor de copiere
     Autobuz(const Autobuz& other);
