@@ -7,17 +7,19 @@ class Troleibuz : public Vehicul {
     bool baterieAuxiliara;
 public:
     // Constructor
-    Troleibuz(const std::string& numar, const int cap, const bool baterie);
+    Troleibuz(const std::string& numar, int cap, bool baterie);
 
     // Constructor de copiere
-    Troleibuz(Troleibuz& other);
+    Troleibuz(const Troleibuz& other);
+
+    Troleibuz* clone() const override;
 
     // Operator =
-    Troleibuz& operator=(Troleibuz& other);
+    Troleibuz& operator=(Troleibuz other);
 
     // Functia prietena swap
-    friend void swap(Troleibuz& a, Troleibuz& b);
+    friend void swap(Troleibuz& a, Troleibuz& b) noexcept;
 
-    ~Troleibuz();
+    ~Troleibuz() override;
     
 };

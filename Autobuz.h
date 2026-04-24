@@ -7,19 +7,23 @@ class Autobuz : public Vehicul {
     void afisare(std::ostream& out) const override;
     std::string tipMotor;
 public:
+
+    Autobuz();
     // Constructor
-    Autobuz(const std::string& numar, const int cap, const std::string& motor);
+    Autobuz(const std::string& numar, int cap, const std::string& motor);
 
     // Constructor de copiere
     Autobuz(const Autobuz& other);
 
+    Autobuz* clone() const override;
+
     // Operatorul =
-    Autobuz& operator=(const Autobuz other);
+    Autobuz& operator=(Autobuz other);
 
     // Functie prieten swap
-    friend void swap(Autobuz& a, Autobuz& b);
+    friend void swap(Autobuz& a, Autobuz& b) noexcept;
 
     // Destructor
-    ~Autobuz();
+    ~Autobuz() override;
 
 };

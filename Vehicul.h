@@ -7,16 +7,21 @@ class Vehicul {
     static int contorId;
     virtual void afisare(std::ostream&) const = 0;
 protected:
+    const int id;
     int capacitateMax;
     // int nrKM;
-    const int id;
     std::string nrInmatriculare;
 
 
 
 public:
+    Vehicul();
+
     // Constructor
-    Vehicul(const std::string& numar, const int cap);
+    Vehicul(const std::string& numar, int cap);
+
+    // Constructor de mutare
+    Vehicul(Vehicul&& other) noexcept;
 
     // Constructor de copiere
     Vehicul(const Vehicul& other);
@@ -27,13 +32,15 @@ public:
     // Destructor
     virtual ~Vehicul();
 
+    virtual Vehicul* clone() const = 0;
+
     // Funcție statica
     // static int getTotalVehicule();
 
     // Afisare
     friend std::ostream& operator<<(std::ostream& out, const Vehicul& v);
 
-    friend void swap(Vehicul& a, Vehicul& b);
+    friend void swap(Vehicul& a, Vehicul& b) noexcept;
 
     // Getters
     const std::string getNrInmatriculare() const;

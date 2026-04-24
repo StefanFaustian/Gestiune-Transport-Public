@@ -1,8 +1,15 @@
 #include "Vehicul.h"
+#include "Exceptii.h"
 #include <iomanip>
 
+Vehicul::Vehicul() : id(++contorId) {}
+
 // Implementare constructor
-Vehicul::Vehicul(const std::string& numar, const int cap) : nrInmatriculare(numar), capacitateMax(cap), id(++contorId) {
+Vehicul::Vehicul(const std::string& numar, const int cap) : id(++contorId), capacitateMax(cap), nrInmatriculare(numar) {
+    if (cap <= 0) {
+        throw EroareValidareVehicul("Capacitatea vehiculului nu poate fi negativa sau nula.");
+    }
+
     std::cout << "Vehicul " << nrInmatriculare << " construit.\n";
 }
 
@@ -11,11 +18,19 @@ Vehicul::~Vehicul() {
     std::cout << "Vehicul " << nrInmatriculare << " distrus.\n";
 }
 
+Vehicul::Vehicul(Vehicul&& other) noexcept
+    : id(other.id),
+      capacitateMax(other.capacitateMax),
+      nrInmatriculare(std::move(other.nrInmatriculare)) // se muta string-ul
+{
+    other.capacitateMax = 0;
+}
+
 // Implementare constructor de copiere
-Vehicul::Vehicul(const Vehicul& other) : nrInmatriculare(other.nrInmatriculare), capacitateMax(other.capacitateMax), id(++contorId) {}
+Vehicul::Vehicul(const Vehicul& other) : id(++contorId), capacitateMax(other.capacitateMax), nrInmatriculare(other.nrInmatriculare) {}
 
 // Implementare functie swap
-void swap(Vehicul& a, Vehicul& b) {
+void swap(Vehicul& a, Vehicul& b) noexcept {
     using std::swap;
     swap(a.nrInmatriculare, b.nrInmatriculare);
     swap(a.capacitateMax, b.capacitateMax);

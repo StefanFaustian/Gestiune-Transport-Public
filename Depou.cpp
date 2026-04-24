@@ -2,13 +2,42 @@
 #include "Autobuz.h"
 #include "Tramvai.h"
 #include "Troleibuz.h"
+#include "Exceptii.h"
 #include <random>
 
-Depou::Depou(const std::string& nume_) : nume(nume_) {}
+Depou::Depou(const std::string& nume_, const int cap) : id(++contorId), capacitateMax(cap), nume(nume_) {
+    if (nume_.empty()) {
+        throw EroareValidareDepou("Un depou trebuie sa aiba un nume.");
+    }
+}
+
+Depou::Depou(const Depou& other) : id(++contorId), capacitateMax(other.capacitateMax), nume(other.nume) {
+    for (const auto& vehicul : other.vehicule) {
+        std::shared_ptr<Vehicul> copieVehicul(vehicul->clone());
+        this->adaugaVehicul(copieVehicul);
+    }
+}
+
+Depou::Depou(Depou&& other) noexcept
+    : id(other.id),
+      capacitateMax(other.capacitateMax),
+      nume(std::move(other.nume)),
+      vehicule(std::move(other.vehicule)) // se muta vectorul de shared_ptr, operatie de complexitate O(1), cu mult mai rapid decat CC!
+{
+    other.capacitateMax = 0;
+}
+
+Depou& Depou::operator=(Depou other) {
+    swap(*this, other);
+    return *this;
+}
 
 Depou::~Depou() = default;
 
-void Depou::adaugaVehicul(Vehicul* v) {
+void Depou::adaugaVehicul(const std::shared_ptr<Vehicul> v) {
+    if (vehicule.size() >= static_cast<size_t>(capacitateMax)) {
+        throw EroareCapacitateDepou(nume);
+    }
     vehicule.emplace_back(v);
 }
 
@@ -42,9 +71,18 @@ void Depou::inspectieDeRutina() const {
 }
 
 std::ostream& operator<<(std::ostream& out, const Depou& d) {
-    out << "Depoul " << d.nume << " -~- Inventar\n";
+    out << "(ID " << d.id << ") Depoul " << d.nume << " -~- Inventar\n";
     for (const auto& vehicul : d.vehicule) {
-        std::cout << *vehicul;
+        out << *vehicul;
     }
     return out;
 }
+
+void swap(Depou& a, Depou& b) {
+    using std::swap;
+    swap(a.capacitateMax, b.capacitateMax);
+    swap(a.nume, b.nume);
+    swap(a.vehicule, b.vehicule);
+}
+
+int Depou::contorId = 0;

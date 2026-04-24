@@ -1,0 +1,6 @@
+# Sablon citire date
+# TIP_VEHICUL,NR_INMATRICULARE,CAPACITATE,[ PARAMETRI_SPECIFICI_VEHICUL ]
+
+Autobuz,B151NXY,70,electric,cabron
+Tramvai,B1240,80,3
+Troleibuz,B6700,55,1
