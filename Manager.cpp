@@ -31,18 +31,13 @@ void Manager::raportReviziiUrgente() {
     std::cout << "\n--- RAPORT VEHICULE CE NECESITA REVIZIE URGENTA ---\n";
     bool gasit = false;
 
-    // Parcurgem set-ul cu toate numerele de inmatriculare din oras
     for (const auto& nrInmatriculare : numereInmatriculate) {
-
-        // Ne folosim de functia ta de nivel inalt pentru a obtine pointerul
         const auto vehicul = gasesteVehiculGlobal(nrInmatriculare);
-
         if (vehicul && vehicul->necesitaRevizie()) {
             std::cout << "Vehiculul " << vehicul->getNrInmatriculare() << " necesita revizie urgent!\n";
             gasit = true;
         }
     }
-
     if (!gasit) {
         std::cout << "Toata flota este in stare perfecta de functionare!\n";
     }
@@ -108,7 +103,7 @@ void Manager::adaugaVehiculNou(const std::string& numeDepou, const std::shared_p
     itDepou->adaugaVehicul(vehiculNou);
     numereInmatriculate.insert(nr);
 
-    std::cout << "Vehiculul " << nr << " a fost adăugat cu succes în " << numeDepou<< ".\n";
+    std::cout << "Vehiculul " << nr << " a fost adaugat cu succes in " << numeDepou<< ".\n";
 }
 
 void Manager::stergeVehicul(const std::string& nrInmatriculare) {
@@ -181,7 +176,6 @@ void Manager::incarcaFlota(Depou& depou, const std::string& numeFisier) {
                     throw EroareFisier("Citirea a esuat pentru ca linia " + rand + " nu respecta formatul de input pentru tramvaie.");
 
                 trim(nrVagoaneStr);
-                // int nrVagoane = std::stoi(nrVagoaneStr);
                 int nrVagoane = safeStoi(nrVagoaneStr,"numar vagoane tramvai");
                 std::getline(randParse, kmStr, ',');
                 int km = kmStr.empty() ? 0 : safeStoi(kmStr, "kilometri la bord");
@@ -280,7 +274,7 @@ void Manager::alocaVehiculPeLinie(const std::string& nrInmatriculare, const std:
 }
 
 void Manager::incheieZiuaDeLucru() {
-    const int CICLURI_PE_ZI = 12; // Numarul de cicluri realizate de vehicul pe linia asignata
+    const int CICLURI_PE_ZI = 15; // Numarul de cicluri realizate de vehicul pe linia asignata
     const int KM_ACCES = 10; // 5km de la depou la traseu + 5km inapoi
 
     for (auto& linie : linii) {

@@ -1,8 +1,6 @@
-// Constructori virtuali
-
 #include "Manager.h"
 #include <iostream>
-
+#include "Meniu.h"
 #include "Exceptii.h"
 
 
@@ -12,18 +10,11 @@ int main() {
     try {
         SA.incarcaDepouri("Depouri.txt");
         SA.incarcaLinii("Linii.txt");
-        SA.alocaVehiculPeLinie("B101NXY","12");
-        SA.incheieZiuaDeLucru();
-        SA.alocaVehiculPeLinie("B101NXY","12");
-        SA.incheieZiuaDeLucru();
-        SA.raportReviziiUrgente();
-        SA.trimiteInService("B101NXY");
-        SA.raportReviziiUrgente();
-
     } catch (const EroareGenerala& err) {
         std::cerr << err.what() << '\n';
+        return 1;
     }
-
-    SA.afis();
+    Meniu meniu(SA);
+    meniu.start();
     return 0;
 }

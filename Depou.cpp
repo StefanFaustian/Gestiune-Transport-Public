@@ -1,10 +1,7 @@
 #include "Depou.h"
 #include "Autobuz.h"
-#include "Tramvai.h"
-#include "Troleibuz.h"
 #include "Exceptii.h"
 #include <algorithm> // pentru std::find_if()
-#include <random>
 
 Depou::Depou(const std::string& nume_, const int cap) : id(++contorId), capacitateMax(cap), nume(nume_) {
     if (nume_.empty()) {

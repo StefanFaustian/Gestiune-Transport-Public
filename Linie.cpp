@@ -43,7 +43,7 @@ int Linie::calculeazaDistantaTurRetur() const {
 
 void Linie::trimiteVehicul(const std::string& nrInmatriculare) {
     if (vehiculeActivePeLinii.count(nrInmatriculare)) {
-        throw EroareOperatiune("Vehiculul " + nrInmatriculare + " este deja pe traseu (pe această linie sau pe alta)!");
+        throw EroareOperatiune("Vehiculul " + nrInmatriculare + " este deja pe traseu (pe aceasta linie sau pe alta)!");
     }
 
     vehiculeActivePeLinii.insert(nrInmatriculare);  // inserare intre vehiculele asignate unei linii
@@ -54,7 +54,7 @@ void Linie::trimiteVehicul(const std::string& nrInmatriculare) {
 
 void Linie::retrageVehicul(const std::string& nrInmatriculare) {
     if (vehiculePeTraseu.find(nrInmatriculare) == vehiculePeTraseu.end()) {
-        throw EroareOperatiune("Vehiculul " + nrInmatriculare + " nu se află pe linia " + indicativ + "!");
+        throw EroareOperatiune("Vehiculul " + nrInmatriculare + " nu se afla pe linia " + indicativ + "!");
     }
 
     vehiculePeTraseu.erase(nrInmatriculare);    // stergere dintre vehiculele asignate liniei curente

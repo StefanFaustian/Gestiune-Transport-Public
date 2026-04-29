@@ -31,7 +31,7 @@ void swap(Troleibuz& a, Troleibuz& b) noexcept{
 }
 
 bool Troleibuz::necesitaRevizie() const {
-    if (baterieAuxiliara) return (nrKM - nrKmUltimaRevizie) > 2500;
+    if (baterieAuxiliara) return (nrKM - nrKmUltimaRevizie) > 1800;
     return (nrKM - nrKmUltimaRevizie > 2000);
 }
 

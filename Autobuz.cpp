@@ -31,8 +31,8 @@ void swap(Autobuz& a, Autobuz& b) noexcept {
 Autobuz* Autobuz::clone() const { return new Autobuz(*this); }
 
 bool Autobuz::necesitaRevizie() const {
-    if (tipMotor == "electric") return (nrKM - nrKmUltimaRevizie) > 2500;
-    return (nrKM - nrKmUltimaRevizie) > 20;
+    if (tipMotor == "electric") return (nrKM - nrKmUltimaRevizie) > 1500;
+    return (nrKM - nrKmUltimaRevizie) > 1000;
 }
 
 Autobuz::~Autobuz() = default; //{ std::cout<<"Autobuz distrus.\n"; }

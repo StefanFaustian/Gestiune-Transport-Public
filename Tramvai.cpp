@@ -30,12 +30,9 @@ void swap(Tramvai& a, Tramvai& b) noexcept {
     swap(a.nrVagoane,b.nrVagoane);
 }
 
-bool Tramvai::necesitaRevizie() const { return (nrKM - nrKmUltimaRevizie) > 3500; }
+bool Tramvai::necesitaRevizie() const { return (nrKM - nrKmUltimaRevizie) > 2500; }
 
 Tramvai::~Tramvai() {
     //std::cout<<"Tramvai distrus.\n";
 }
-
-//int Tramvai::MAX_VAGOANE = 4;
-
 

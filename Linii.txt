@@ -21,4 +21,8 @@ Universitate, 4
 > 44, TRAMVAI
 Pantelimon, 0
 Vatra Luminoasa, 5
+Piata Unirii, 6
+Tineretului, 7
+Eroii Revolutiei, 5
+Progresul, 5
 
