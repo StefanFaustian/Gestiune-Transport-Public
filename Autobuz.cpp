@@ -8,7 +8,7 @@ void Autobuz::afisare(std::ostream& out) const {
 
 Autobuz::Autobuz() {}
 
-Autobuz::Autobuz(const std::string& numar, const int cap, const std::string& motor) : Vehicul(numar,cap), tipMotor(motor) {
+Autobuz::Autobuz(const std::string& numar, const int cap, const std::string& motor, const int km) : Vehicul(numar,cap,km), tipMotor(motor) {
     const std::regex regexAutobuz("^[A-Z]{1,2}[0-9]{2,3}[A-Z]{3}$");
     if (!std::regex_match(numar, regexAutobuz)) {
         throw EroareValidareVehicul("Numar invalid pentru autobuz (" + numar + "). Format asteptat: B123XYZ.");

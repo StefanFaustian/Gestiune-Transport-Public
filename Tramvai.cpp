@@ -6,7 +6,7 @@ void Tramvai::afisare(std::ostream& out) const {
     out << "Nr. vagoane: " << nrVagoane << "\n~~~~~~~~~~~TRAMVAI~~~~~~~~~~~\n";
 }
 
-Tramvai::Tramvai(const std::string numar, const int cap, const int vagoane) : Vehicul(numar,cap), nrVagoane(vagoane) {
+Tramvai::Tramvai(const std::string numar, const int cap, const int vagoane, const int km) : Vehicul(numar,cap,km), nrVagoane(vagoane) {
     const std::regex regexTramvai("^[A-Z]{1,2}[0-9]{4}$");
     if (!std::regex_match(numar, regexTramvai)) {
         throw EroareValidareVehicul("Numar invalid pentru tramvai (" + numar + "). Format asteptat: B1234.");

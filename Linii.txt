@@ -1,0 +1,13 @@
+# Sablon citire date
+# > INDICATIV_LINIE1,TIP_VEHICUL1
+# NUME_STATIE1, DISTANTA_STATIE_PRECEDENTA1
+# ...
+# NUME_STATIEn, DISTANTA_STATIE_PRECEDENTAn
+# > ...
+
+> 12, AUTOBUZ
+Baba Novac, 0
+Liviu Rebreanu, 8
+Nicolae Grigorescu, 4
+1 Decembrie 1918, 3
+Nicolae Teclu, 6

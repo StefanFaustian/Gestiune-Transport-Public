@@ -3,6 +3,7 @@
 #include "Tramvai.h"
 #include "Troleibuz.h"
 #include "Exceptii.h"
+#include <algorithm> // pentru std::find_if()
 #include <random>
 
 Depou::Depou(const std::string& nume_, const int cap) : id(++contorId), capacitateMax(cap), nume(nume_) {
@@ -41,6 +42,20 @@ void Depou::adaugaVehicul(const std::shared_ptr<Vehicul> v) {
     vehicule.emplace_back(v);
 }
 
+bool Depou::eliminaVehicul(const std::string& nr) {
+    const auto it = std::find_if(vehicule.begin(), vehicule.end(),
+        [&nr](const std::shared_ptr<Vehicul>& v) {
+            return v->getNrInmatriculare() == nr;
+        });
+
+    if (it != vehicule.end()) {
+        vehicule.erase(it);
+        return true;
+    }
+
+    return false; // Nu s-a găsit în acest depou
+}
+
 void Depou::inspectieDeRutina() const {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -68,6 +83,16 @@ void Depou::inspectieDeRutina() const {
             std::cout << "Verificare pneuri .............. " << (starePneuri > 25 ? "OK\n" : "Necesita mentenanta!\n");
         }
     }
+}
+
+std::shared_ptr<Vehicul> Depou::cautaVehicul(const std::string& nrInmatriculare) {
+    const auto it = std::find_if(vehicule.begin(), vehicule.end(),
+        [&nrInmatriculare](const std::shared_ptr<Vehicul>& v) { return v->getNrInmatriculare() == nrInmatriculare;});
+
+    if (it != vehicule.end()) {
+        return *it;
+    }
+    return nullptr; // cazul in care nu a fost gasit vehiculul cautat
 }
 
 std::ostream& operator<<(std::ostream& out, const Depou& d) {

@@ -25,7 +25,12 @@ public:
 
     ~Depou();
     void adaugaVehicul(std::shared_ptr<Vehicul> v);
+    bool eliminaVehicul(const std::string& nr);
     void inspectieDeRutina() const;
+    std::shared_ptr<Vehicul> cautaVehicul(const std::string& nrInmatriculare);
     friend std::ostream& operator<<(std::ostream& out, const Depou& d);
     friend void swap(Depou& a, Depou& b);
+
+    // Getters
+    const std::string& getNume() const { return nume; }
 };

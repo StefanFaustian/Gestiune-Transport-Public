@@ -16,7 +16,7 @@ public:
 
 class EroareOperatiune : public EroareGenerala {
 public:
-    explicit EroareOperatiune(const std::string& mesaj) : EroareGenerala("EROARE OPERATIUNE " + mesaj) {}
+    explicit EroareOperatiune(const std::string& mesaj) : EroareGenerala("EROARE OPERATIUNE: " + mesaj) {}
 };
 
 class EroareFisier : public EroareGenerala {

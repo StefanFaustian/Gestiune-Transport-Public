@@ -9,7 +9,7 @@ class Vehicul {
 protected:
     const int id;
     int capacitateMax;
-    // int nrKM;
+    int nrKM = 0;
     std::string nrInmatriculare;
 
 
@@ -18,7 +18,7 @@ public:
     Vehicul();
 
     // Constructor
-    Vehicul(const std::string& numar, int cap);
+    Vehicul(const std::string& numar, int cap, int km = 0);
 
     // Constructor de mutare
     Vehicul(Vehicul&& other) noexcept;
@@ -40,9 +40,11 @@ public:
     // Afisare
     friend std::ostream& operator<<(std::ostream& out, const Vehicul& v);
 
+    void actualizeazaKM (const int km) { nrKM += km; }
+
     friend void swap(Vehicul& a, Vehicul& b) noexcept;
 
     // Getters
-    const std::string getNrInmatriculare() const;
+    std::string getNrInmatriculare() const { return nrInmatriculare; }
 
 };

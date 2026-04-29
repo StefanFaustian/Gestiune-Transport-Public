@@ -10,7 +10,7 @@ public:
 
     Autobuz();
     // Constructor
-    Autobuz(const std::string& numar, int cap, const std::string& motor);
+    Autobuz(const std::string& numar, int cap, const std::string& motor, int km = 0);
 
     // Constructor de copiere
     Autobuz(const Autobuz& other);

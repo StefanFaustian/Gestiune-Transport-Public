@@ -18,7 +18,9 @@ add_executable(Tema2
         Exceptii.h
         Manager.h
         Manager.cpp
-        Utilitare.h)
+        Utilitare.h
+        Linie.cpp
+        Linie.h)
 
 # Preia toate fisierele cu extensia .txt
 #file(GLOB DATE_TEXT "${CMAKE_CURRENT_SOURCE_DIR}/*.txt")

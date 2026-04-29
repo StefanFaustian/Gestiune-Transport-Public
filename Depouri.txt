@@ -1,5 +1,5 @@
 # Sablon citire date
 # NUME_DEPOU,CAPACITATE,FISIER_SURSA_FLOTA
 
-Obor     ,3,Obor.txt
+Obor,3,Obor.txt
 Stefan cel Mare,20,StefanCelMare.txt

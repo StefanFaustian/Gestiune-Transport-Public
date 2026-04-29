@@ -8,7 +8,7 @@ void Troleibuz::afisare(std::ostream& out) const {
     out<<"\n~~~~~~~~~~~TROLEIBUZ~~~~~~~~~~~\n";
 }
 
-Troleibuz::Troleibuz(const std::string& numar, const int cap, const bool baterie) : Vehicul(numar,cap), baterieAuxiliara(baterie) {
+Troleibuz::Troleibuz(const std::string& numar, const int cap, const bool baterie, const int km) : Vehicul(numar,cap,km), baterieAuxiliara(baterie) {
     const std::regex regexTroleibuz("^[A-Z]{1,2}[0-9]{4}$");
     if (!std::regex_match(numar, regexTroleibuz)) {
         throw EroareValidareVehicul("Numar invalid pentru tramvai (" + numar + "). Format asteptat: B1234.");

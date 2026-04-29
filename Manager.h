@@ -1,17 +1,25 @@
 #pragma once
 
 #include "Depou.h"
+#include "Linie.h"
 #include <string>
 #include <unordered_set>
 #include <vector>
 
 class Manager {
     std::string numeManager;
-    std::unordered_set<std::string> numereInmatriculate;
-    void incarcaFlota(Depou& depou, const std::string& numeFisier);
+    std::unordered_set<std::string> numereInmatriculate;  // verificare rapida a unicitatii vehiculelor
     std::vector<Depou> depouri;
+    std::vector<Linie> linii;
+    void incarcaFlota(Depou& depou, const std::string& numeFisier);
 public:
-    void afis();
+    void afis() const;
     explicit Manager(const std::string& nume);
+    std::shared_ptr<Vehicul> gasesteVehiculGlobal(const std::string& nrInmatriculare);
+    void adaugaVehiculNou(const std::string& numeDepou, std::shared_ptr<Vehicul> vehiculNou);
+    void stergeVehicul(const std::string& nrInmatriculare);
     void incarcaDepouri(const std::string& numeFisier);
+    void incarcaLinii(const std::string& numeFisier);
+    void alocaVehiculPeLinie(const std::string& nrInmatriculare, const std::string& indicativLinie);
+    void incheieZiuaDeLucru();
 };

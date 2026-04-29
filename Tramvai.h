@@ -7,7 +7,7 @@ class Tramvai : public Vehicul {
     int nrVagoane;
     static constexpr int MAX_VAGOANE = 4;
 public:
-    Tramvai(std::string numar, int cap, int vagoane);
+    Tramvai(std::string numar, int cap, int vagoane, int km = 0);
 
     // Constructor de copiere
     Tramvai(const Tramvai& other);
