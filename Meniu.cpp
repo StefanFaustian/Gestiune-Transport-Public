@@ -52,7 +52,7 @@ std::string Meniu::alegeLinie() const {
     const auto& linii = manager.getLinii();
 
     std::cout << "\n--- SELECTEAZA LINIA ---\n";
-    for (size_t i = 0; i < linii.size(); i++) {
+    for (int i = 0; i < linii.size(); i++) {
         std::cout << i + 1 << ". Linia " << linii[i].getIndicativ() << "\n";
     }
     std::cout << "Alege linia: ";
@@ -68,7 +68,7 @@ void Meniu::trateazaAdaugareVehicul() {
     int capacitate, km;
 
     std::cout << "\n--- SELECTEAZA DEPOUL PENTRU ADAUGARE ---\n";
-    for (size_t i = 0; i < depouri.size(); i++) {
+    for (int i = 0; i < depouri.size(); i++) {
         std::cout << i + 1 << ". " << depouri[i].getNume() << "\n";
     }
     std::cout << "Alege depou: ";
@@ -125,7 +125,7 @@ void Meniu::trateazaTrimitereInService() {
     }
 
     std::cout << "\n--- VEHICULE CE NECESITA REVIZIE ---\n";
-    for (size_t i = 0; i < masiniFaraRevizie.size(); i++) {
+    for (int i = 0; i < masiniFaraRevizie.size(); i++) {
         std::cout << i + 1 << ". Vehiculul " << masiniFaraRevizie[i] << "\n";
     }
 
