@@ -16,10 +16,16 @@ public:
     void afis() const;
     explicit Manager(const std::string& nume);
     std::shared_ptr<Vehicul> gasesteVehiculGlobal(const std::string& nrInmatriculare);
+    void raportReviziiUrgente();
+    void trimiteInService(const std::string& nrInmatriculare);
     void adaugaVehiculNou(const std::string& numeDepou, std::shared_ptr<Vehicul> vehiculNou);
     void stergeVehicul(const std::string& nrInmatriculare);
     void incarcaDepouri(const std::string& numeFisier);
     void incarcaLinii(const std::string& numeFisier);
     void alocaVehiculPeLinie(const std::string& nrInmatriculare, const std::string& indicativLinie);
     void incheieZiuaDeLucru();
+
+    // Getters
+    const std::vector<Depou>& getDepouri() const { return depouri; }
+    const std::vector<Linie>& getLinii() const { return linii; }
 };

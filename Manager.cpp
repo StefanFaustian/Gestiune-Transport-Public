@@ -27,6 +27,40 @@ std::shared_ptr<Vehicul> Manager::gasesteVehiculGlobal(const std::string& nrInma
     return nullptr; // cazul in care nu a fost gasit vehiculul cautat
 }
 
+void Manager::raportReviziiUrgente() {
+    std::cout << "\n--- RAPORT VEHICULE CE NECESITA REVIZIE URGENTA ---\n";
+    bool gasit = false;
+
+    // Parcurgem set-ul cu toate numerele de inmatriculare din oras
+    for (const auto& nrInmatriculare : numereInmatriculate) {
+
+        // Ne folosim de functia ta de nivel inalt pentru a obtine pointerul
+        const auto vehicul = gasesteVehiculGlobal(nrInmatriculare);
+
+        if (vehicul && vehicul->necesitaRevizie()) {
+            std::cout << "Vehiculul " << vehicul->getNrInmatriculare() << " necesita revizie urgent!\n";
+            gasit = true;
+        }
+    }
+
+    if (!gasit) {
+        std::cout << "Toata flota este in stare perfecta de functionare!\n";
+    }
+    std::cout << "---------------------------------------------------\n";
+}
+
+void Manager::trimiteInService(const std::string& nrInmatriculare) {
+    if (Linie::esteVehiculActiv(nrInmatriculare)) {
+        throw EroareOperatiune("Vehiculul " + nrInmatriculare + " este pe traseu! Asteapta retragerea catre depou mai intai!");
+    }
+
+    const auto vehicul = gasesteVehiculGlobal(nrInmatriculare);
+    if (!vehicul) {
+        throw EroareOperatiune("Vehiculul " + nrInmatriculare + " nu exista in sistem!");
+    }
+    vehicul->efectueazaRevizie();
+}
+
 void Manager::incarcaDepouri(const std::string& numeFisier) {
     std::ifstream fin(numeFisier);
     if (!fin.is_open()) {
@@ -55,13 +89,10 @@ void Manager::incarcaDepouri(const std::string& numeFisier) {
         } catch (const EroareGenerala& err) {
             std::cerr << err.what() << '\n';
         }
-        // catch (const std::exception& err) {
-        //     std::cerr << "Eroare la conversia capacitatii depoului de la linia " << rand << ". (Nu se poate aplica " << err.what() << " pe \"" << capacitateStr << "\")\n";
-        // }
     }
 }
 
-void Manager::adaugaVehiculNou(const std::string& numeDepou, std::shared_ptr<Vehicul> vehiculNou) {
+void Manager::adaugaVehiculNou(const std::string& numeDepou, const std::shared_ptr<Vehicul> vehiculNou) {
     const std::string nr = vehiculNou->getNrInmatriculare();
 
     if (numereInmatriculate.count(nr)) {
@@ -253,7 +284,7 @@ void Manager::incheieZiuaDeLucru() {
     const int KM_ACCES = 10; // 5km de la depou la traseu + 5km inapoi
 
     for (auto& linie : linii) {
-        int kmTotalNou = (linie.calculeazaDistantaTurRetur() * CICLURI_PE_ZI) + KM_ACCES;
+        const int kmTotalNou = (linie.calculeazaDistantaTurRetur() * CICLURI_PE_ZI) + KM_ACCES;
 
         for (const auto& nrInmatriculare : linie.getVehiculePeTraseu()) {
             const auto vehicul = gasesteVehiculGlobal(nrInmatriculare);

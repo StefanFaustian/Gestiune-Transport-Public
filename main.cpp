@@ -16,6 +16,9 @@ int main() {
         SA.incheieZiuaDeLucru();
         SA.alocaVehiculPeLinie("B101NXY","12");
         SA.incheieZiuaDeLucru();
+        SA.raportReviziiUrgente();
+        SA.trimiteInService("B101NXY");
+        SA.raportReviziiUrgente();
 
     } catch (const EroareGenerala& err) {
         std::cerr << err.what() << '\n';

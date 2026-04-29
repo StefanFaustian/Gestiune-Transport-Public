@@ -33,4 +33,5 @@ public:
 
     // Getters
     const std::string& getNume() const { return nume; }
+    const std::vector<std::shared_ptr<Vehicul>>& getFlota() const { return vehicule; }
 };

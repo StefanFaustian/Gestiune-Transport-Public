@@ -11,3 +11,14 @@ Liviu Rebreanu, 8
 Nicolae Grigorescu, 4
 1 Decembrie 1918, 3
 Nicolae Teclu, 6
+> 32, TROLEIBUZ
+Pacii, 0
+Gorjului, 6
+Lujerului, 4
+Politehnica, 3
+Eroilor, 8
+Universitate, 4
+> 44, TRAMVAI
+Pantelimon, 0
+Vatra Luminoasa, 5
+

@@ -3,10 +3,8 @@
 #include <regex>
 
 void Autobuz::afisare(std::ostream& out) const {
-    out<<"Tipul motorului: " << tipMotor << "\n~~~~~~~~~~~AUTOBUZ~~~~~~~~~~~\n";
+    out << " | [AUTOBUZ] Motor: " << tipMotor << '\n';
 }
-
-Autobuz::Autobuz() {}
 
 Autobuz::Autobuz(const std::string& numar, const int cap, const std::string& motor, const int km) : Vehicul(numar,cap,km), tipMotor(motor) {
     const std::regex regexAutobuz("^[A-Z]{1,2}[0-9]{2,3}[A-Z]{3}$");
@@ -32,6 +30,9 @@ void swap(Autobuz& a, Autobuz& b) noexcept {
 
 Autobuz* Autobuz::clone() const { return new Autobuz(*this); }
 
-Autobuz::~Autobuz() {
-    std::cout<<"Autobuz distrus.\n";
+bool Autobuz::necesitaRevizie() const {
+    if (tipMotor == "electric") return (nrKM - nrKmUltimaRevizie) > 2500;
+    return (nrKM - nrKmUltimaRevizie) > 20;
 }
+
+Autobuz::~Autobuz() = default; //{ std::cout<<"Autobuz distrus.\n"; }

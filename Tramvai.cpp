@@ -3,7 +3,7 @@
 #include <regex>
 
 void Tramvai::afisare(std::ostream& out) const {
-    out << "Nr. vagoane: " << nrVagoane << "\n~~~~~~~~~~~TRAMVAI~~~~~~~~~~~\n";
+    out << " | [TRAMVAI] Nr. vagoane: " << nrVagoane << '\n';
 }
 
 Tramvai::Tramvai(const std::string numar, const int cap, const int vagoane, const int km) : Vehicul(numar,cap,km), nrVagoane(vagoane) {
@@ -30,8 +30,10 @@ void swap(Tramvai& a, Tramvai& b) noexcept {
     swap(a.nrVagoane,b.nrVagoane);
 }
 
+bool Tramvai::necesitaRevizie() const { return (nrKM - nrKmUltimaRevizie) > 3500; }
+
 Tramvai::~Tramvai() {
-    std::cout<<"Tramvai distrus.\n";
+    //std::cout<<"Tramvai distrus.\n";
 }
 
 //int Tramvai::MAX_VAGOANE = 4;

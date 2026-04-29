@@ -5,35 +5,37 @@
 Vehicul::Vehicul() : id(++contorId) {}
 
 // Implementare constructor
-Vehicul::Vehicul(const std::string& numar, const int cap, const int km) : id(++contorId), capacitateMax(cap), nrKM(km), nrInmatriculare(numar) {
+Vehicul::Vehicul(const std::string& numar, const int cap, const int km) : id(++contorId), capacitateMax(cap), nrKM(km), nrKmUltimaRevizie(km), nrInmatriculare(numar) {
     if (cap <= 0) {
         throw EroareValidareVehicul("Capacitatea vehiculului nu poate fi negativa sau nula.");
     }
 
-    std::cout << "Vehicul " << nrInmatriculare << " construit.\n";
+    //std::cout << "Vehicul " << nrInmatriculare << " construit.\n";
 }
 
 // Implementare destructor
 Vehicul::~Vehicul() {
-    std::cout << "Vehicul " << nrInmatriculare << " distrus.\n";
+    //std::cout << "Vehicul " << nrInmatriculare << " distrus.\n";
 }
 
 Vehicul::Vehicul(Vehicul&& other) noexcept
     : id(other.id),
       capacitateMax(other.capacitateMax),
       nrKM(other.nrKM),
+      nrKmUltimaRevizie(other.nrKmUltimaRevizie),
       nrInmatriculare(std::move(other.nrInmatriculare)) // se muta string-ul
 {
     other.capacitateMax = 0;
 }
 
 // Implementare constructor de copiere
-Vehicul::Vehicul(const Vehicul& other) : id(++contorId), capacitateMax(other.capacitateMax), nrKM(other.nrKM), nrInmatriculare(other.nrInmatriculare) {}
+Vehicul::Vehicul(const Vehicul& other) : id(++contorId), capacitateMax(other.capacitateMax), nrKM(other.nrKM), nrKmUltimaRevizie(other.nrKmUltimaRevizie), nrInmatriculare(other.nrInmatriculare) {}
 
 // Implementare functie swap
 void swap(Vehicul& a, Vehicul& b) noexcept {
     using std::swap;
     swap(a.nrKM, b.nrKM);
+    swap(a.nrKmUltimaRevizie,b.nrKmUltimaRevizie);
     swap(a.nrInmatriculare, b.nrInmatriculare);
     swap(a.capacitateMax, b.capacitateMax);
 }
@@ -43,25 +45,22 @@ Vehicul& Vehicul::operator=(const Vehicul& other) {
     if (this == &other)
         return *this;
     nrKM = other.nrKM;
+    nrKmUltimaRevizie = other.nrKmUltimaRevizie;
     nrInmatriculare = other.nrInmatriculare;
     capacitateMax = other.capacitateMax;
     return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const Vehicul& v) {
-    out<<"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    out<<"(ID " << std::setw(3) << std::setfill('0') << v.id <<") Vehicul inmatriculat: " << v.nrInmatriculare<< '\n';
-    out<<"Are capacitate de " << v.capacitateMax << '\n';
-    out<<"Km parcursi: " << v.nrKM << '\n';
+    out << "[ID: " << std::setfill('0') << std::setw(3) << v.id << "] "
+        << std::setfill(' ') << std::left << std::setw(7) << v.nrInmatriculare
+        << std::right
+        << " | Cap: " << v.capacitateMax
+        << " | KM: " << v.nrKM;
+
     v.afisare(out);
-    out<<'\n';
+
     return out;
 }
 
-
-
 int Vehicul::contorId = 0;
-
-// int Vehicul::getTotalVehicule() {
-//     return contorId;
-// }

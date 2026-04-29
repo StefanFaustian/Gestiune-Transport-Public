@@ -3,9 +3,8 @@
 #include <regex>
 
 void Troleibuz::afisare(std::ostream& out) const {
-    if (baterieAuxiliara) out << "Are baterie auxiliara.";
-    else out << "Nu are baterie auxiliara.";
-    out<<"\n~~~~~~~~~~~TROLEIBUZ~~~~~~~~~~~\n";
+
+    out << " | [TROLEIBUZ] Baterie aux: " << (baterieAuxiliara ? "Da" : "Nu") << '\n';
 }
 
 Troleibuz::Troleibuz(const std::string& numar, const int cap, const bool baterie, const int km) : Vehicul(numar,cap,km), baterieAuxiliara(baterie) {
@@ -31,6 +30,11 @@ void swap(Troleibuz& a, Troleibuz& b) noexcept{
     swap(a.baterieAuxiliara,b.baterieAuxiliara);
 }
 
+bool Troleibuz::necesitaRevizie() const {
+    if (baterieAuxiliara) return (nrKM - nrKmUltimaRevizie) > 2500;
+    return (nrKM - nrKmUltimaRevizie > 2000);
+}
+
 Troleibuz::~Troleibuz() {
-    std::cout << "Troleibuz distrus.\n";
+    //std::cout << "Troleibuz distrus.\n";
 }

@@ -4,3 +4,8 @@
 Autobuz,B151NXY,70,electric,3500
 Tramvai,B1240,80,3
 Troleibuz,B6700,55,1
+Tramvai,B1230,75,3
+Tramvai,B9111,100,4
+Tramvai,B7771,80,3,1999
+Troleibuz,B1220,65,1,6444
+Autobuz,B333CET,72,diesel,9999

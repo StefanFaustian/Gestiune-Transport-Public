@@ -78,8 +78,8 @@ std::ostream& operator<<(std::ostream& out, const Linie& linie) {
         out << vehicul << " ";
     out << "\nStatiile: ";
     for (const auto& statie : linie.statii)
-        out << statie.nume << ", ";
-    out << '\n';
+        out << statie.nume << "-->";
+    out << "<--\n";
     return out;
 }
 

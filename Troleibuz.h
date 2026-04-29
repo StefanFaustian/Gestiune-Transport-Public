@@ -4,16 +4,17 @@
 
 class Troleibuz : public Vehicul {
     void afisare(std::ostream& out) const override;
-    bool baterieAuxiliara;
+    bool baterieAuxiliara = false;
 public:
     // Constructor
+    Troleibuz() = default;
     Troleibuz(const std::string& numar, int cap, bool baterie, int km = 0);
 
     // Constructor de copiere
     Troleibuz(const Troleibuz& other);
 
     Troleibuz* clone() const override;
-
+    bool necesitaRevizie() const override;
     // Operator =
     Troleibuz& operator=(Troleibuz other);
 

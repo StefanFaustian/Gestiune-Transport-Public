@@ -8,14 +8,15 @@ class Autobuz : public Vehicul {
     std::string tipMotor;
 public:
 
-    Autobuz();
     // Constructor
+    Autobuz() = default;
     Autobuz(const std::string& numar, int cap, const std::string& motor, int km = 0);
 
     // Constructor de copiere
     Autobuz(const Autobuz& other);
 
     Autobuz* clone() const override;
+    bool necesitaRevizie() const override;
 
     // Operatorul =
     Autobuz& operator=(Autobuz other);

@@ -8,8 +8,9 @@ class Vehicul {
     virtual void afisare(std::ostream&) const = 0;
 protected:
     const int id;
-    int capacitateMax;
+    int capacitateMax = 0;
     int nrKM = 0;
+    int nrKmUltimaRevizie = 0;
     std::string nrInmatriculare;
 
 
@@ -34,6 +35,8 @@ public:
 
     virtual Vehicul* clone() const = 0;
 
+    virtual bool necesitaRevizie() const = 0; // functie virtuala specifica temei
+
     // Funcție statica
     // static int getTotalVehicule();
 
@@ -41,6 +44,8 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Vehicul& v);
 
     void actualizeazaKM (const int km) { nrKM += km; }
+
+    void efectueazaRevizie() { nrKmUltimaRevizie = nrKM; }
 
     friend void swap(Vehicul& a, Vehicul& b) noexcept;
 
