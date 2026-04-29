@@ -14,9 +14,7 @@ Vehicul::Vehicul(const std::string& numar, const int cap, const int km) : id(++c
 }
 
 // Implementare destructor
-Vehicul::~Vehicul() {
-    //std::cout << "Vehicul " << nrInmatriculare << " distrus.\n";
-}
+Vehicul::~Vehicul() = default; // { std::cout << "Vehicul " << nrInmatriculare << " distrus.\n"; }
 
 Vehicul::Vehicul(Vehicul&& other) noexcept
     : id(other.id),

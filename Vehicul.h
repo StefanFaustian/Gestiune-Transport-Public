@@ -13,8 +13,6 @@ protected:
     int nrKmUltimaRevizie = 0;
     std::string nrInmatriculare;
 
-
-
 public:
     Vehicul();
 
@@ -36,9 +34,6 @@ public:
     virtual Vehicul* clone() const = 0;
 
     virtual bool necesitaRevizie() const = 0; // functie virtuala specifica temei
-
-    // Funcție statica
-    // static int getTotalVehicule();
 
     // Afisare
     friend std::ostream& operator<<(std::ostream& out, const Vehicul& v);

@@ -28,4 +28,6 @@ public:
     // Getters
     const std::vector<Depou>& getDepouri() const { return depouri; }
     const std::vector<Linie>& getLinii() const { return linii; }
+
+    ~Manager() = default;
 };

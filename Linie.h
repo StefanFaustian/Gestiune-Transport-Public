@@ -41,4 +41,6 @@ public:
 
     static bool esteVehiculActiv(const std::string& nrInmatriculare) { return vehiculeActivePeLinii.count(nrInmatriculare);}
     friend std::ostream& operator<<(std::ostream& out, const Linie& linie);
+
+    ~Linie() = default;
 };

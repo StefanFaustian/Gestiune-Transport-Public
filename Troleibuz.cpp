@@ -35,6 +35,4 @@ bool Troleibuz::necesitaRevizie() const {
     return (nrKM - nrKmUltimaRevizie > 2000);
 }
 
-Troleibuz::~Troleibuz() {
-    //std::cout << "Troleibuz distrus.\n";
-}
+Troleibuz::~Troleibuz() = default; // { std::cout << "Troleibuz distrus.\n"; }

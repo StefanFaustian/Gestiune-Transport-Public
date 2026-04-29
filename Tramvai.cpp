@@ -32,7 +32,5 @@ void swap(Tramvai& a, Tramvai& b) noexcept {
 
 bool Tramvai::necesitaRevizie() const { return (nrKM - nrKmUltimaRevizie) > 2500; }
 
-Tramvai::~Tramvai() {
-    //std::cout<<"Tramvai distrus.\n";
-}
+Tramvai::~Tramvai() = default; //{ std::cout<<"Tramvai distrus.\n"; }
 

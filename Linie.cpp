@@ -37,7 +37,6 @@ int Linie::calculeazaDistantaTurRetur() const {
     int sumaDistanta = 0;
     for (const auto& s : statii)
         sumaDistanta += s.distPrecedent;
-
     return 2 * sumaDistanta;
 }
 
